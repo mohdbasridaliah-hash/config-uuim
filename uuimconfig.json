@@ -1,9 +1,9 @@
 {
     "version": 1,
-    "api": "https://api.yourdomain.com",
+    "api": "https://im2.uuim-vip1.com/workspace",
     "backup": [
-        "https://api2.yourdomain.com",
-        "https://api3.yourdomain.com"
+        "https://im.uuim-vip1.com/workspace",
+        "https://im2.uuim-vip1.com/workspace"
     ],
     "notice": "",
     "forceUpdate": false
