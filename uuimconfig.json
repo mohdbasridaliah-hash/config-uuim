@@ -1,0 +1,10 @@
+{
+    "version": 1,
+    "api": "https://api.yourdomain.com",
+    "backup": [
+        "https://api2.yourdomain.com",
+        "https://api3.yourdomain.com"
+    ],
+    "notice": "",
+    "forceUpdate": false
+}
